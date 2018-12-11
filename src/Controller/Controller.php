@@ -3,6 +3,7 @@
 namespace UserFrosting\Sprinkle\WAdapter\Controller;
 
 use UserFrosting\Sprinkle\Core\Controller\SimpleController;
+use UserFrosting\Support\Exception\NotFoundException;
 use Slim\Http\Request;
 use Slim\Http\Response;
 
@@ -14,11 +15,11 @@ class Controller extends SimpleController
     $dir = \UserFrosting\SPRINKLES_DIR . "/WAdapter";
 
     $request_dir = $request->getUri()->getPath();
-    $filename = end(explode("/",explode("/", $request_dir)));
-    $extension = end(explode(".", $filename));
+    $filename = array_values(array_slice(explode("/", $request_dir), -1))[0];
+    $extension = array_values(array_slice(explode(".", $filename), -1))[0];
 
     if ($extension == $filename) {
-      $filename = "index.php";
+      $filename = "index.html";
       if (substr($request_dir, -1) != "/") {
         $request_dir .= "/";
       }
@@ -29,7 +30,11 @@ class Controller extends SimpleController
 
     $dir .= "/" . $request_dir;
 
-    die($dir);
+    if(!file_exists($dir)) {
+      throw new NotFoundException();
+    }
+
+    
 
   }
 }

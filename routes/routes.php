@@ -1,3 +1,3 @@
 <?php
 
-$app->get("/site", "UserFrosting\Sprinkle\WAdapter\Controller\Controller:handlePage");
+$app->get("/site/{params:.*}", "UserFrosting\Sprinkle\WAdapter\Controller\Controller:handlePage");

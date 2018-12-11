@@ -1,0 +1,17 @@
+{
+  "name": "archey347/uf-wysiwyg-web-editor-adapter",
+  "type": "userfrosting-sprinkle",
+  "description": "",
+  "license" : "MIT",
+  "authors" : [
+      {
+          "name": "Archey Barrell",
+          "homepage": "https://github.com/archey347"
+      }
+  ],
+  "autoload": {
+      "psr-4": {
+          "UserFrosting\\Sprinkle\\WAdapter\\": "src/"
+      }
+  }
+}

@@ -34,7 +34,19 @@ class Controller extends SimpleController
       throw new NotFoundException();
     }
 
-    
+    if($extension == "htm") {
+
+    } else {
+      
+      
+      $contentType = mime_content_type($dir);
+      if($extension == "css") {
+        $contentType = "text/css";
+      }
+      
+      return $response->withHeader('Content-type', $contentType)
+                      ->write(file_get_contents($dir));
+    }
 
   }
 }

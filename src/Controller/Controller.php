@@ -14,8 +14,9 @@ class Controller extends SimpleController
   {
     $dir = \UserFrosting\SPRINKLES_DIR . "/WAdapter";
 
-    $request_dir = $request->getUri()->getPath();
+    $request_dir =  $request->getUri()->getPath();
     $filename = array_values(array_slice(explode("/", $request_dir), -1))[0];
+
     $extension = array_values(array_slice(explode(".", $filename), -1))[0];
 
     if ($extension == $filename) {
@@ -28,13 +29,14 @@ class Controller extends SimpleController
       $extension = end(explode(".", $filename));
     }
 
-    $dir .= "/" . $request_dir;
+    $dir .= "/templates/" . $request_dir;
 
     if(!file_exists($dir)) {
       throw new NotFoundException();
     }
 
-    if($extension == "htm") {
+    if($extension == "html") {
+      return $this->ci->view->render($response, $request_dir);
 
     } else {
       

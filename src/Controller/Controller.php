@@ -14,7 +14,7 @@ class Controller extends SimpleController
   {
     $dir = \UserFrosting\SPRINKLES_DIR . "/WAdapter";
 
-    $request_dir =  $request->getUri()->getPath();
+    $request_dir =  urldecode($request->getUri()->getPath());
     $filename = array_values(array_slice(explode("/", $request_dir), -1))[0];
 
     $extension = array_values(array_slice(explode(".", $filename), -1))[0];

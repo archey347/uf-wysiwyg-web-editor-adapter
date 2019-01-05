@@ -8,7 +8,7 @@ Modify your sprinkles.json with the following:
 ```
 {
     "require": {
-        "archey347/uf-wysiwyg-web-editor-adapter ": "~v0.0.1-beta"
+        "archey347/uf-wysiwyg-web-editor-adapter ": "~v0.0.2"
     },
     "base": [
         "core",

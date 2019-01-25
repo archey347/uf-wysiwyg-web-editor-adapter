@@ -29,7 +29,12 @@ class Controller extends SimpleController
       $extension = end(explode(".", $filename));
     }
 
-    $dir .= "/templates/" . $request_dir;
+    if($args['fromRoot']) {
+      $dir .= "/templates/site/" . $request_dir;
+  
+    } else {
+      $dir .= "/templates/" . $request_dir;
+    }
 
     if(!file_exists($dir)) {
       throw new NotFoundException();

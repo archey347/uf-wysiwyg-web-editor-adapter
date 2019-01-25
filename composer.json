@@ -9,6 +9,9 @@
           "homepage": "https://github.com/archey347"
       }
   ],
+  "extra": {
+        "installer-name": "WAdapter"
+  },
   "autoload": {
       "psr-4": {
           "UserFrosting\\Sprinkle\\WAdapter\\": "src/"
